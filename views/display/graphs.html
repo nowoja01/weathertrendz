@@ -1,0 +1,13 @@
+{{extend 'display/base.html'}}
+
+<head class="head">
+{{block scripts}}
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="{{=URL('static','js/graphsAndStuff.js')}}"></script>
+{{end}}
+</head>
+    <section class="Agraph">
+        {{block mygraph}}
+        <div id="visualization" style="width: 800px; height: 400px;"></div>
+        {{end}}
+    </section>

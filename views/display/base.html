@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head class="head">
+    <title>Weather Trendz</title>
+    {{block scripts}}
+    {{end}}
+    {{response.files.append(URL('static','css/base.css'))}}
+    <link rel="stylesheet" type="text/css" href="{{=URL('static','css/base.css')}}">
+
+</head>
+
+<body> 
+    <header>
+        <h1>Weather Trendz</h1>
+        <br/>
+        <h4>Let's talk about the weather!</h4>
+    </header>
+
+    <nav>
+<a href="http://www.google.com">Decorah Records</a>  |  
+<a href="http://www.youtube.com">Decorah Trends</a>  |  
+<a href="http://www.facebook.com">Prediction Comparisons</a>
+    </nav>
+
+    <section class="Agraph">
+        {{block mygraph}}
+OH look! A graph will go here.
+        {{end}}
+    </section>
+
+    <footer>
+
+    <a href="www.wikipedia.org">Welcome Admins!</a>
+    <address>
+    Created by <a href="mailto:nowoja01@luther.edu"> Jake Nowosatka </a> and <a href="mailto:mcrosa01@luther.edu"> Sarah McRoberts </a>
+    </address>
+    </footer>
+</body>
+
+</html>

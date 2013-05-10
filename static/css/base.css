@@ -1,0 +1,19 @@
+/*color scheme provided by http://www.colorsontheweb.com/colorwizard.asp main hex: 4A88C0*/
+body{
+    background-color: #BAD1E6;
+    color: #101F2D;
+    
+}
+
+a:link {
+    color: #0F152D;
+}
+
+a:visited {
+    color: #2D1D0F;
+}
+
+header{
+    color: #E1EBF4;
+    background-color: #4A88C0;
+}
