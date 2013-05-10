@@ -7,3 +7,6 @@
 [2013-05-07 23:06:43] EDIT weathertrendz/models/weathertrendz_db.py: 11
 [2013-05-07 23:07:53] EDIT weathertrendz/models/weathertrendz_db.py: -3
 [2013-05-07 23:07:55] EDIT weathertrendz/models/weathertrendz_db.py: 0
+[2013-05-09 13:45:01] CREATE testdb.py: 0
+[2013-05-09 13:45:45] CREATE testdb/index.html: 0
+[2013-05-09 13:48:34] EDIT weathertrendz/views/testdb/index.html: 0

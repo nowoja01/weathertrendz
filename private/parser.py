@@ -38,7 +38,66 @@ class Parser:
 
 
     def parseMarcusData(self):
-        pass
+        filenames = ["daily_actual2013-05-09.csv", "daily_forecast2013-05-09.csv"]
+
+        readings = {}
+
+        with open(filenames[0], 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                if line != "":
+                    ldata = line.split(',')
+                    zcode = ldata[0]
+                    rdate = ldata[3]
+                    high = ldata[4]
+                    precip  = ldata[5] if ldata[5] != "" else None
+                    if zcode not in readings:
+                        readings[zcode] = {}
+                    readings[zcode][rdate] = {"high":high,"precip":precip}
+
+        with open(filenames[1], 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                if line != "":
+                    ldata = line.split(',')
+                    zcode = ldata[0]
+                    cdate = ldata[2]
+                    fdate = ldata[3]
+                    fhigh = ldata[4] if ldata[4] != "" else None
+                    pop = ldata[5] if ldata[5] != "" else None
+                    if zcode in readings and fdate in readings[zcode]:
+                        readings[zcode][fdate]["pop"] = pop
+
+                        cd = datetime.datetime.strptime(cdate, "%Y-%m-%d").date()
+                        fd = datetime.datetime.strptime(fdate, "%Y-%m-%d").date()
+                        delta = fd - cd
+                        if delta.days == 1:
+                            readings[zcode][fdate]["one_day_high"] = fhigh
+                        else:
+                            readings[zcode][fdate]["three_day_high"] = fhigh
+
+
+        for zcode in readings:
+            datestodel = []
+            for date in readings[zcode]:
+                keys = ['high', 'pop', 'precip', 'one_day_high', 'three_day_high']
+                for key in keys:
+                    if key not in readings[zcode][date]:
+                        datestodel.append(date)
+                        break
+
+            for date in datestodel:
+                readings[zcode].pop(date, None)
+
+
+        with open('marcus-data.yaml', 'w') as f:
+            data = yaml.dump(readings)
+            f.write(data)
+
+
+
+
 
 p = Parser()
-p.parseBernatzData()
+#p.parseBernatzData()
+p.parseMarcusData()
