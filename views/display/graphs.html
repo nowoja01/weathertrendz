@@ -2,7 +2,8 @@
 
 <head class="head">
 {{block scripts}}
-  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript"> var rows= {{=rows,escape=False}}</script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript" src="{{=URL('static','js/graphsAndStuff.js')}}"></script>
 {{end}}
 </head>
