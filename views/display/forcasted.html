@@ -1,0 +1,45 @@
+{{extend 'display/base.html'}}
+
+<head class="head">
+{{block scripts}}
+    <script type="text/javascript"> var rows= {{=rows,escape=False}}</script>
+	<script type="text/javascript"> var zcodes= {{=zipcodes,escape=False}}</script>
+	<script type="text/javascript" src="{{=URL('static','js/jquery.js')}}"></script>
+	<script type="text/javascript" src="{{=URL('static','js/web2py.js')}}"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="{{=URL('static','js/forcasted.js')}}"></script>
+	
+{{end}}
+</head>
+    <section class="Agraph">
+        {{block mygraph}}
+        <div id="visualization" style="width: 800px; height: 400px; float: left;"></div>
+		<div id="graphcontrols" class="inlineblock" style="display: inline-block; margin-left: 20px;" >
+			Zip Codes:
+			<select id="zipcodes" value="52101">
+			{{for item in zipcodes:}}
+				{{if item['zip_code'] == 52101:}}
+					{{=OPTION(item['zip_code'], _selected=True)}}
+				{{else:}}
+					{{=OPTION(item['zip_code'])}}
+				{{pass}}
+			{{pass}}
+			</select>
+			<br/>
+			<div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
+			Start Date: <input type="date" id="start_date" /> <br/>
+			End Date:   <input type="date" id="end_date" /> <br/>
+			<button onclick="updateData()">Update</button> <br/>
+			<!-- Just parsing some python data -->
+			{{highs = [r['hightemp'] for r in rows]}}
+			{{onehighs = [r['one_day_high'] for r in rows]}}
+			{{threehighs = [r['three_day_high'] for r in rows]}}
+			
+			Actual High Average: <span id="actualhigh">{{=sum(highs)/len(highs)}}</span> <br/>
+			One Day High Average: <span id="onedayhigh">{{=sum(onehighs)/len(onehighs)}}</span><br/>
+			Three Day High Average: <span id="threedayhigh">{{=sum(threehighs)/len(threehighs)}}</span><br/>
+			
+		</div>
+		<!-- <span style="clear: both;"/> -->
+		{{end}}
+	<section />

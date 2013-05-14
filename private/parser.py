@@ -50,7 +50,7 @@ class Parser:
                     zcode = ldata[0]
                     rdate = ldata[3]
                     high = ldata[4]
-                    precip  = ldata[5] if ldata[5] != "" else None
+                    precip  = ldata[5] if ldata[5] != "" else 0.0
                     if zcode not in readings:
                         readings[zcode] = {}
                     readings[zcode][rdate] = {"high":high,"precip":precip}
@@ -82,7 +82,7 @@ class Parser:
             for date in readings[zcode]:
                 keys = ['high', 'pop', 'precip', 'one_day_high', 'three_day_high']
                 for key in keys:
-                    if key not in readings[zcode][date]:
+                    if key not in readings[zcode][date] or (key in readings[zcode][date] and readings[zcode][date][key] == None):
                         datestodel.append(date)
                         break
 
@@ -94,10 +94,29 @@ class Parser:
             data = yaml.dump(readings)
             f.write(data)
 
+    def parseBernatzDataForHighPrediction(self):
+        inputfile = "data.yaml"
+        outputfile = "bernatz_highs.txt"
+        data = yaml.load(open(inputfile, 'r'))
+        keys = data.keys()
+        keys.sort()
+        outputstring = ""
+        for key in keys:
+            wdata = data[key]
+            addToList = True
+            for item in wdata:
+                if wdata[item] == "-99" or wdata[item] == "-9900":
+                    addToList = False
+            if not addToList:
+                continue
+            year, month, day = key.split('-')
+            outputstring = outputstring + wdata['max'] + "," + year + "," + month + "," + day + "\n"
 
-
+        with open(outputfile, "w+") as f:
+            f.write(outputstring)
 
 
 p = Parser()
 #p.parseBernatzData()
 p.parseMarcusData()
+#p.parseBernatzDataForHighPrediction()
