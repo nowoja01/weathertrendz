@@ -2,11 +2,12 @@
 <html>
 <head class="head">
     <title>Weather Trendz</title>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     {{block scripts}}
     {{end}}
-    {{response.files.append(URL('static','css/base.css'))}}
     <link rel="stylesheet" type="text/css" href="{{=URL('static','css/base.css')}}">
 	<script type="text/javascript" src="{{=URL('static','js/jquery.js')}}"></script>
+
 
 </head>
 
@@ -18,10 +19,10 @@
     </header>
 
     <nav>
-<a href="http://www.google.com">Highs and Lows</a>  |  
-<a href="http://www.youtube.com">Precipitation</a>  |  
-<a href="http://www.facebook.com">Snow Records</a>  |  
-<a href="http://www.facebook.com">Prediction Comparisons</a>
+<a href="{{=URL('highsAndLows')}}">Highs and Lows</a>  |  
+<a href="{{=URL('precipitation')}}">Precipitation</a>  |  
+<a href="{{=URL('snowfall')}}">Snow Records</a>  |  
+<a href="{{=URL('forcasted')}}">Prediction Comparisons</a>
 
     </nav>
 

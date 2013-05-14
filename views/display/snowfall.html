@@ -1,0 +1,16 @@
+{{extend 'display/base.html'}}
+
+<head class="head">
+{{block scripts}}
+    <script type="text/javascript">  var rows= {{=rows,escape=False}}</script>
+    <script type="text/javascript" src="{{=URL('static','js/snowfall.js')}}"></script>
+{{end}}
+</head>
+    <section class="Agraph">
+        {{block mygraph}}
+         <div style="width: 700px; height: 400px;" id="highs"></div>
+            <br/>
+            <br/>
+         <div style="width: 700px; height: 400px;" id="totals"></div>
+        {{end}}
+    </section>
