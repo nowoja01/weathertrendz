@@ -62,7 +62,7 @@ function updateData(){
 		showErrorMessage("Start Date is not a valid date!");
 		return;
 	}
-	if (!isValidDate(start_date)){
+	if (!isValidDate(end_date)){
 		showErrorMessage("End Date is not a valid date!");
 		return;
 	}

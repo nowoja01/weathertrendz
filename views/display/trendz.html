@@ -1,0 +1,28 @@
+{{extend 'display/base.html'}}
+
+<head class="head">
+{{block scripts}}
+    <script type="text/javascript"> var rows= {{=rows,escape=False}}</script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="{{=URL('static','js/trendz.js')}}"></script>
+	
+{{end}}
+</head>
+    <section class="Agraph">
+        {{block mygraph}}
+        <div id="visualization" style="width: 800px; height: 400px; float: left;"></div>
+		<div id="graphcontrols" class="inlineblock" style="display: inline-block; margin-left: 20px;" >
+			<div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
+			Trending Date: <input type="date" id="trending_date" /> <br/>
+			Looking back:
+			<select id="yearsback">
+				<option value=5>5 years</option>
+				<option value=15>15 years</option>
+				<option value=50>50 years</option>
+				<option value=100>100 years</option>
+				<option value=1000>All the years</option>
+			</select>
+			<button onclick="updateData()">Update</button> <br/>
+		</div>
+		{{end}}
+	<section />

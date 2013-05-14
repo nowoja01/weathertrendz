@@ -4,6 +4,8 @@
 {{block scripts}}
     <script type="text/javascript"> var rows= {{=rows,escape=False}}</script>
 	<script type="text/javascript"> var zcodes= {{=zipcodes,escape=False}}</script>
+	<script type="text/javascript" src="{{=URL('static','js/jquery.js')}}"></script>
+	<script type="text/javascript" src="{{=URL('static','js/web2py.js')}}"></script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	<script type="text/javascript" src="{{=URL('static','js/forcasted.js')}}"></script>
 	
@@ -27,7 +29,7 @@
 			<div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
 			Start Date: <input type="date" id="start_date" /> <br/>
 			End Date:   <input type="date" id="end_date" /> <br/>
-			<button onclick="updateData()">Update</button> <br/>
+			<button onclick="updateData">Update</button>
 			<!-- Just parsing some python data -->
 			{{highs = [r['hightemp'] for r in rows]}}
 			{{onehighs = [r['one_day_high'] for r in rows]}}

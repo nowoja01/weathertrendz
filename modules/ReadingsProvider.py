@@ -15,6 +15,19 @@ def getReadingsInRange(db, start_date, end_date, *selected_fields):
         .select(*fields)
     return rows
 
+def getDayReadingInRange(db, date, year_range):
+    if type(date) is str:
+        date = datetime.strptime(date, "%Y-%m-%d").date()
+    if type(year_range) is str:
+        year_range = int(year_range)
+
+    names = ['recorded_on', 'hightemp', 'lowtemp', 'precipitation', 'snowfall']
+    fields = [db.Readings[name] for name in names]
+    query = db((db.Readings.recorded_on.day() == date.day) & (db.Readings.recorded_on.month() == date.month) &\
+            (db.Readings.recorded_on.year() <= date.year) & (db.Readings.recorded_on.year() >= (date.year - year_range)))
+    rows = query.select(*fields)
+    return rows
+
 
 def getDailyForcastedReadingsInRange(db, zip_code, start_date, end_date, *selected_fields):
     '''start_date and end_date are inclusive

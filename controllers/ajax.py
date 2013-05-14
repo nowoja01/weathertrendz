@@ -21,3 +21,11 @@ def getHighLowData():
     rows = getReadingsInRange(db, start_date, end_date, 'recorded_on', 'hightemp', 'lowtemp')
     rowslist = rows.as_list()
     return response.json(rowslist)
+
+def getDayReadingData():
+    date = request.get_vars['date']
+    year_range = request.get_vars['year_range']
+
+    rows = getDayReadingInRange(db, date, year_range)
+    rowslist = rows.as_list()
+    return response.json(rowslist)
