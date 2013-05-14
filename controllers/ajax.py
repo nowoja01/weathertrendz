@@ -12,3 +12,12 @@ def getForcastedData():
     rows = getDailyForcastedReadingsInRange(db, zip_code, start_date, end_date)
     rowslist = rows.as_list()
     return response.json(rowslist)
+
+
+def getHighLowData():
+    start_date = request.get_vars['start_date']
+    end_date = request.get_vars['end_date']
+
+    rows = getReadingsInRange(db, start_date, end_date, 'recorded_on', 'hightemp', 'lowtemp')
+    rowslist = rows.as_list()
+    return response.json(rowslist)
