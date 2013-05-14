@@ -8,6 +8,18 @@
 </head>
     <section class="Agraph">
         {{block mygraph}}
-         <div style="width: 800px; height: 400px;" id="visualization"></div>
+         <div style="width: 800px; height: 400px; float: left;" id="visualization"></div>
+		 <div id="graphcontrols" class="inlineblock" style="display: inline-block; margin-left: 20px;" >
+			<div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
+			Start Date: <input type="date" id="start_date" /> <br/>
+			End Date:   <input type="date" id="end_date" /> <br/>
+			<button onclick="updateData()">Update</button> <br/>
+			<!-- Just parsing some python data -->
+			{{highs = [r['hightemp'] for r in rows]}}
+			{{lows = [r['lowtemp'] for r in rows]}}
+			
+			High Average: <span id="highavg">{{=sum(highs)/len(highs)}}</span> <br/>
+			Low Average: <span id="lowavg">{{=sum(lows)/len(lows)}}</span><br/>
+		</div>
         {{end}}
     </section>
