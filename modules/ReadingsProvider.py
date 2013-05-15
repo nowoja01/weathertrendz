@@ -21,11 +21,13 @@ def getDayReadingInRange(db, date, year_range):
     if type(year_range) is str:
         year_range = int(year_range)
 
-    names = ['recorded_on', 'hightemp', 'lowtemp', 'precipitation', 'snowfall']
-    fields = [db.Readings[name] for name in names]
+    #names = selected_fields if len(selected_fields) > 0 else\
+        #['recorded_on', 'hightemp', 'lowtemp', 'precipitation', 'snowfall']
+    #fields = [db.Readings[name] for name in names]
+
     query = db((db.Readings.recorded_on.day() == date.day) & (db.Readings.recorded_on.month() == date.month) &\
             (db.Readings.recorded_on.year() <= date.year) & (db.Readings.recorded_on.year() >= (date.year - year_range)))
-    rows = query.select(*fields)
+    rows = query.select()
     return rows
 
 
@@ -49,7 +51,7 @@ def getDailyForcastedReadingsInRange(db, zip_code, start_date, end_date, *select
 def getDailyForcastedReadingsZipCodes(db):
     names = ['zip_code']
     fields = [db.DailyForcastedReadings[name] for name in names]
-    codes = db().select(*fields, distinct=True)
+    codes = db(db.DailyForcastedReadings.id > 0).select(distinct=db.DailyForcastedReadings.zip_code)
     return codes
 
 
