@@ -22,6 +22,22 @@ def getHighLowData():
     rowslist = rows.as_list()
     return response.json(rowslist)
 
+def getPrecipitationData():
+    start_date = request.get_vars['start_date']
+    end_date = request.get_vars['end_date']
+
+    rows = getReadingsInRange(db, start_date, end_date, 'recorded_on', 'precipitation')
+    rowslist = rows.as_list()
+    return response.json(rowslist)
+
+def getSnowfallData():
+    start_date = request.get_vars['start_date']
+    end_date = request.get_vars['end_date']
+
+    rows = getReadingsInRange(db, start_date, end_date, 'recorded_on', 'snowfall')
+    rowslist = rows.as_list()
+    return response.json(rowslist)
+
 def getDayReadingData():
     date = request.get_vars['date']
     year_range = request.get_vars['year_range']

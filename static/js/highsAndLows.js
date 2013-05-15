@@ -88,7 +88,7 @@ function updateData(){
 		return;
 	}
 	if (start_date > end_date){
-		showErrorMessge("The Start Date is greater than the End Date!!");
+		showErrorMessage("The Start Date is greater than the End Date!!");
 		return;
 	}
 	$("#error_banner").hide();
