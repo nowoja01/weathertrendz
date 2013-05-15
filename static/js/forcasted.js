@@ -19,7 +19,8 @@ function drawVisualization() {
 
 	var annotatedtimeline = new google.visualization.AnnotatedTimeLine(
       document.getElementById('visualization'));
-	annotatedtimeline.draw(data, {'displayAnnotations': true});
+	annotatedtimeline.draw(data, {'displayAnnotations': true,
+                                  'colors':['#4960C0','#858585','#C0494D','#C0BC49'] });
   
   
 	actualavg = 0;

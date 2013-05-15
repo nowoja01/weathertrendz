@@ -31,7 +31,8 @@ function highestSnowfall() {
        draw(data,
            {title:"Yearly Snowfall Highs",
             width:700, height:400,
-            hAxis: {title: "Year"}}
+            hAxis: {title: "Year"},
+            'colors':['#4960C0','#858585','#C0494D','#C0BC49']}
        );
 }
 
@@ -66,7 +67,8 @@ function totalSnowfall() {
        draw(data,
            {title:"Yearly Snowfall Totals",
             width:700, height:400,
-            hAxis: {title: "Year"}}
+            hAxis: {title: "Year"},
+            'colors':['#4960C0','#858585','#C0494D','#C0BC49']}
        );
 }
 function DrawVisualizations(){
