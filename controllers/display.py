@@ -10,6 +10,7 @@ def highsAndLows():
 
 def trendz():
     rows = getDayReadingInRange(db, date(2012,9,5), 15)
+    return dict(rows=rows.as_list())
 
 def precipitation():
     rows = getReadingsInRange(db,date(2000,9,1), date(2012,9,30), 'recorded_on', 'precipitation')
