@@ -7,15 +7,16 @@
 {{end}}
 </head>
     <section class="Agraph">
-        {{block mygraph}}
-         <div style="width: 700px; height: 400px;" id="highs"></div>
-            <br/>
-            <br/>
-         <div style="width: 700px; height: 400px;" id="totals"></div>
-		 <div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
-		 Start Date: <input type="date" id="start_date" /> <br/>
-		 End Date:   <input type="date" id="end_date" /> <br/>
-		 <button onclick="updateData()">Update</button> <br/>
+        {{block mygraph}}        
+        <div id="graphcontrols" class="inlineblock">
+		     <div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
+		     Start Date: <input type="date" id="start_date" /> <br/>
+		     End Date:   <input type="date" id="end_date" /> <br/>
+		     <button onclick="updateData()">Update</button> <br/>
+        </div>
+         <div id="highs"></div>
+         <div id="totals"></div>
+
         {{end}}
     </section>
 

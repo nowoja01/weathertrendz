@@ -21,15 +21,76 @@ body{
     
 }
 
-body a:link {
-    color: #0F152D;
+
+
+a:link {
+    color: #101F2D;
 }
 
-body a:visited {
-    color: #2D1D0F;
+a:visited {
+    color: #101F2D;
 }
 
 header{
     color: #E1EBF4;
     background-color: #4A88C0;
+    padding-left:30px;
 }
+
+h1 {
+    font-size:400%; 
+}
+
+h3{
+    padding-left: 250px;
+}
+nav {
+    padding-left: 30px;
+}
+section{
+    padding-left: 30px;
+}
+
+#graphcontrols{ 
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+    padding-top: 50px;
+    float: right;
+}
+
+#graphs{
+    float:left;
+    width:800px;
+}
+
+#highs,#totals{
+    padding-top: 50px;
+    width: 700px; 
+    height: 400px;
+}
+
+#visualization{
+    padding-top: 50px;
+    width: 700px; 
+    height: 400px; 
+    float: left;
+}
+
+#tempvisualization, #precipvisualization{
+    margin-bottom: 50px;
+    width: 700px; 
+    height: 250px; 
+    float: left;
+}
+footer{
+    position:relative;
+    bottom:-10%;
+}
+
+#error_banner{
+    display: none; 
+    background-color:red;
+}
+
+

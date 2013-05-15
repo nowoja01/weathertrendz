@@ -13,8 +13,7 @@
 </head>
     <section class="Agraph">
         {{block mygraph}}
-        <div id="visualization" style="width: 800px; height: 400px; float: left;"></div>
-		<div id="graphcontrols" class="inlineblock" style="display: inline-block; margin-left: 20px;" >
+		<div id="graphcontrols" class="inlineblock" >
 			Zip Codes:
 			<select id="zipcodes" value="52101">
 			{{for item in zipcodes:}}
@@ -26,7 +25,7 @@
 			{{pass}}
 			</select>
 			<br/>
-			<div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
+			<div class="hidden" id="error_banner"></div>
 			Start Date: <input type="date" id="start_date" /> <br/>
 			End Date:   <input type="date" id="end_date" /> <br/>
 			<button onclick="updateData">Update</button> <br/><br/>
@@ -36,6 +35,6 @@
 			Three Day High Average: <span id="threedayhigh"></span><br/>
 			
 		</div>
-		<!-- <span style="clear: both;"/> -->
+        <div id="visualization"></div>
 		{{end}}
 	<section />

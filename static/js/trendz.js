@@ -40,7 +40,7 @@ function drawTempVisualization() {
 
 	var annotatedtimeline = new google.visualization.AnnotatedTimeLine(
       document.getElementById('tempvisualization'));
-	annotatedtimeline.draw(data, {'title':"Highs and Lows",'displayAnnotations': true});
+	annotatedtimeline.draw(data, {'title':"Highs and Lows",'displayAnnotations': true,'colors':['#4960C0','#C0494D','#C0BC49','#858585']});
 	
 	$("#highavg").html(Math.round(highavg/rows.length));
 	$("#recordhigh").html(rechigh);
@@ -85,8 +85,9 @@ function drawPrecipVisualization() {
 	var chart = new google.visualization.ScatterChart(
         document.getElementById('precipvisualization'));
     chart.draw(data, {title: "Precipitation and Snowfall",
-					  vAxis: {title: "Tempurature (Fahrenheit)", titleTextStyle: {color: "blue"}},
-                      hAxis: {title: "Date", titleTextStyle: {color: "blue"}}}
+					  vAxis: {title: "Tempurature (Fahrenheit)", titleTextStyle: {color: 'black'}},
+                      hAxis: {title: "Date", titleTextStyle: {color: 'black'}},
+                      'colors':['#4960C0','#858585','#C0494D','#C0BC49']}
               );
 	
 	
