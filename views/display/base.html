@@ -12,10 +12,8 @@
 </head>
 
 <body> 
-    <header>
-        <h1>Weather Trendz</h1>
-        <br/>
-        <h4>Let's talk about the weather!</h4>
+    <header><h1>Weather Trendz</h1>
+        <h3>Let's talk about the weather!</h3>
     </header>
 
     <nav>
@@ -24,24 +22,16 @@
 <a href="{{=URL('snowfall')}}">Snow Records</a>  |  
 <a href="{{=URL('forcasted')}}">Prediction Comparisons</a>  |  
 <a href="{{=URL('trendz')}}">Decorah Trendz</a>
-
-
     </nav>
 
     <section class="Agraph">
         {{block mygraph}}
-OH look! A graph will go here.
+Hello! Welcome to Weather Trendz! Go ahead and click on the links in the nav bar to get started exploring over a century's worth of weather data!
         {{end}}
     </section>
 
 	<span style="clear:both;"></span>
 	
-    <footer style=" position:absolute;bottom:0;">
-
-    <address>
-    Created by <a href="mailto:nowoja01@luther.edu"> Jake Nowosatka </a> and <a href="mailto:mcrosa01@luther.edu"> Sarah McRoberts </a>
-    </address>
-    </footer>
 </body>
 
 </html>

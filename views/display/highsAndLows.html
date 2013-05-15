@@ -6,11 +6,11 @@
     <script type="text/javascript" src="{{=URL('static','js/highsAndLows.js')}}"></script>
 {{end}}
 </head>
+
     <section class="Agraph">
         {{block mygraph}}
-         <div style="width: 800px; height: 400px; float: left;" id="visualization"></div>
-		 <div id="graphcontrols" class="inlineblock" style="display: inline-block; margin-left: 20px;" >
-			<div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
+		<div id="graphcontrols" class="inlineblock">
+		    <div class="hidden" id="error_banner"></div>
 			Start Date: <input type="date" id="start_date" /> <br/>
 			End Date:   <input type="date" id="end_date" /> <br/>
 			<button onclick="updateData()">Update</button> <br/> <br/>
@@ -20,6 +20,7 @@
 			
 			Average Low: <span id="lowavg"></span><br/>
 			Record Low: <span id="lowrec"></span><br/>
-		</div>
+        </div> 
+        <div id="visualization"></div>
         {{end}}
     </section>

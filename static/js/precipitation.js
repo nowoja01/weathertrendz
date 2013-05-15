@@ -30,7 +30,8 @@ function highestPrecipitation() {
        draw(data,
            {title:"Yearly Precipitation Highs",
             width:700, height:400,
-            hAxis: {title: "Year"}}
+            hAxis: {title: "Year"},
+            'colors':['#4960C0','#858585','#C0494D','#C0BC49']}
        );
 }
 
@@ -48,7 +49,6 @@ function totalPrecipitation() {
         if (currentYear != rYear){
             if (currentYear != 0){
                 rowList.push([String(currentYear),total/100]);
-                console.log("pushed data")
                 total = 0;
             }; 
             currentYear = rYear;
@@ -66,12 +66,12 @@ function totalPrecipitation() {
        draw(data,
            {title:"Yearly Precipitation Totals",
             width:700, height:400,
-            hAxis: {title: "Year"}}
+            hAxis: {title: "Year"},
+            'colors':['#4960C0','#858585','#C0494D','#C0BC49']}
        );
 }
 
 function DrawVisualizations(){
-    console.log("called Graphs")
     totalPrecipitation()
     highestPrecipitation()
 }
