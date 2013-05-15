@@ -10,7 +10,13 @@
 </head>
     <section class="Agraph">
         {{block mygraph}}
-        <div id="visualization" style="width: 800px; height: 400px; float: left;"></div>
+		<div id="graphs" style="float:left;width:800px;">
+			<br/>
+			Highs and Lows:<br/>
+			<div id="tempvisualization" style="width: 800px; height: 250px; float: left;"></div>
+			<br/>
+			<div id="precipvisualization" style="width: 800px; height: 250px; float: left;"></div>
+		</div>
 		<div id="graphcontrols" class="inlineblock" style="display: inline-block; margin-left: 20px;" >
 			<div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
 			Trending Date: <input type="date" id="trending_date" /> <br/>
@@ -22,7 +28,13 @@
 				<option value=100>100 years</option>
 				<option value=1000>All the years</option>
 			</select>
-			<button onclick="updateData()">Update</button> <br/>
+			<button onclick="updateData()">Update</button> <br/><br/>
+			Record High: <span id="recordhigh"></span> <br>
+			Average High: <span id="highavg"></span> <br/><br/>
+			Record Low: <span id="recordlow"></span> <br/>
+			Average Low: <span id="lowavg"></span><br/><br/>
+			Record Rain: <span id="recordrain"></span><br/>
+			Record Snow: <span id="recordsnow"></span>
 		</div>
 		{{end}}
 	<section />

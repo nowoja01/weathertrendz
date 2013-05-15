@@ -32,6 +32,27 @@ function drawVisualization() {
   var annotatedtimeline = new google.visualization.AnnotatedTimeLine(
     document.getElementById('visualization'));
     annotatedtimeline.draw(data, {'displayAnnotations': true});
+	
+	
+	highavg = 0;
+	rechigh = -99;
+	lowavg = 0;
+	reclow = 1000;
+	for (var i = 0; i < rows.length; i ++){
+		highavg += rows[i]['hightemp']
+		if (rows[i]['hightemp'] > rechigh){rechigh = rows[i]['hightemp'];}
+		lowavg += rows[i]['lowtemp']
+		if (rows[i]['lowtemp'] < reclow){reclow = rows[i]['lowtemp'];}
+	}
+		
+	highavg = Math.round(highavg/rows.length)
+	lowavg = Math.round(lowavg/rows.length)
+		
+	$("#highavg").html(highavg);
+	$("#highrec").html(rechigh);
+	
+	$("#lowavg").html(lowavg);
+	$("#lowrec").html(reclow);
 }
 
     
@@ -75,19 +96,6 @@ function updateData(){
 	$.getJSON(url, {'start_date': getJSONDateString(start_date), 'end_date': getJSONDateString(end_date)}, function(data){
 		rows = data;
 		drawVisualization();
-		
-		highavg = 0;
-		lowavg = 0;
-		for (var i = 0; i < rows.length; i ++){
-			highavg += rows[i]['hightemp']
-			lowavg += rows[i]['lowtemp']
-		}
-		
-		highavg = Math.round(highavg/rows.length)
-		lowavg = Math.round(lowavg/rows.length)
-		
-		$("#highavg").html(highavg);
-		$("#lowavg").html(lowavg);
 	});
 
 }

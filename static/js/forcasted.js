@@ -1,25 +1,43 @@
 google.load('visualization', '1', {packages: ['annotatedtimeline']});
 function drawVisualization() {
-  var data = new google.visualization.DataTable();
-  data.addColumn('date', 'Date');
-  data.addColumn('number', 'Actual High');
-  data.addColumn('number', 'One Day Forcasted High');
-  data.addColumn('number', 'Three Day Forcasted High');
-  var rowList = []
-  for (r in rows){
-    var day=[]
-    day.push(new Date(rows[r]['recorded_on']+" 00:00:00"))
-    day.push(rows[r]['hightemp'])
-    day.push(rows[r]['one_day_high'])
-	day.push(rows[r]['three_day_high'])
-    rowList.push(day)
-  }
+	var data = new google.visualization.DataTable();
+	data.addColumn('date', 'Date');
+	data.addColumn('number', 'Actual High');
+	data.addColumn('number', 'One Day Forcasted High');
+	data.addColumn('number', 'Three Day Forcasted High');
+	var rowList = []
+	for (r in rows){
+		var day=[]
+		day.push(new Date(rows[r]['recorded_on']+" 00:00:00"))
+		day.push(rows[r]['hightemp'])
+		day.push(rows[r]['one_day_high'])
+		day.push(rows[r]['three_day_high'])
+		rowList.push(day)
+	}
     
-data.addRows(rowList);
+	data.addRows(rowList);
 
-  var annotatedtimeline = new google.visualization.AnnotatedTimeLine(
+	var annotatedtimeline = new google.visualization.AnnotatedTimeLine(
       document.getElementById('visualization'));
-  annotatedtimeline.draw(data, {'displayAnnotations': true});
+	annotatedtimeline.draw(data, {'displayAnnotations': true});
+  
+  
+	actualavg = 0;
+	onedayavg = 0;
+	threedayavg = 0;
+	for (var i = 0; i < rows.length; i ++){
+		actualavg += rows[i]['hightemp']
+		onedayavg += rows[i]['one_day_high']
+		threedayavg += rows[i]['three_day_high']
+	}
+	
+	actualavg = Math.round(actualavg/rows.length)
+	onedayavg = Math.round(onedayavg/rows.length)
+	threedayavg = Math.round(threedayavg/rows.length)
+	
+	$("#actualhigh").html(actualavg);
+	$("#onedayhigh").html(onedayavg);
+	$("#threedayhigh").html(threedayavg);
 }
 google.setOnLoadCallback(drawVisualization);
 
@@ -61,23 +79,5 @@ function updateData(){
 	$.getJSON(url, {'zip_code':zcode, 'start_date': getJSONDateString(start_date), 'end_date': getJSONDateString(end_date)}, function(data){
 		rows = data;
 		drawVisualization();
-		
-		actualavg = 0;
-		onedayavg = 0;
-		threedayavg = 0;
-		for (var i = 0; i < rows.length; i ++){
-			actualavg += rows[i]['hightemp']
-			onedayavg += rows[i]['one_day_high']
-			threedayavg += rows[i]['three_day_high']
-		}
-		
-		actualavg = Math.round(actualavg/rows.length)
-		onedayavg = Math.round(onedayavg/rows.length)
-		threedayavg = Math.round(threedayavg/rows.length)
-		
-		$("#actualhigh").html(actualavg);
-		$("#onedayhigh").html(onedayavg);
-		$("#threedayhigh").html(threedayavg);
 	});
-
 }

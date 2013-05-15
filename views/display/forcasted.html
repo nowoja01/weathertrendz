@@ -29,15 +29,11 @@
 			<div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
 			Start Date: <input type="date" id="start_date" /> <br/>
 			End Date:   <input type="date" id="end_date" /> <br/>
-			<button onclick="updateData">Update</button>
-			<!-- Just parsing some python data -->
-			{{highs = [r['hightemp'] for r in rows]}}
-			{{onehighs = [r['one_day_high'] for r in rows]}}
-			{{threehighs = [r['three_day_high'] for r in rows]}}
+			<button onclick="updateData">Update</button> <br/><br/>
 			
-			Actual High Average: <span id="actualhigh">{{=sum(highs)/len(highs)}}</span> <br/>
-			One Day High Average: <span id="onedayhigh">{{=sum(onehighs)/len(onehighs)}}</span><br/>
-			Three Day High Average: <span id="threedayhigh">{{=sum(threehighs)/len(threehighs)}}</span><br/>
+			Actual High Average: <span id="actualhigh"></span> <br/>
+			One Day High Average: <span id="onedayhigh"></span><br/>
+			Three Day High Average: <span id="threedayhigh"></span><br/>
 			
 		</div>
 		<!-- <span style="clear: both;"/> -->

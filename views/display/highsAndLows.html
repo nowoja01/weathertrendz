@@ -13,13 +13,13 @@
 			<div class="hidden" id="error_banner" style="display: none; background-color:red;"></div>
 			Start Date: <input type="date" id="start_date" /> <br/>
 			End Date:   <input type="date" id="end_date" /> <br/>
-			<button onclick="updateData()">Update</button> <br/>
-			<!-- Just parsing some python data -->
-			{{highs = [r['hightemp'] for r in rows]}}
-			{{lows = [r['lowtemp'] for r in rows]}}
+			<button onclick="updateData()">Update</button> <br/> <br/>
 			
-			High Average: <span id="highavg">{{=sum(highs)/len(highs)}}</span> <br/>
-			Low Average: <span id="lowavg">{{=sum(lows)/len(lows)}}</span><br/>
+			Average High: <span id="highavg"></span> <br/>
+			Record High: <span id="highrec"></span> <br/> <br/>
+			
+			Average Low: <span id="lowavg"></span><br/>
+			Record Low: <span id="lowrec"></span><br/>
 		</div>
         {{end}}
     </section>
